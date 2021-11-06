@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Viaginho - Search Hotel</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Pesquisar Hotel</h1>
+
+    <form action="#" th:action="@{/hotel/search}" th:object="${hotelSearchData}" method="post">
+        <label>cidade:</label>
+        <input type="text" name="city" th:field="*{city}"/>
+        <label>data de chegada:</label>
+        <input type="startDate" name="startDate" th:field="*{startDate}"/>
+        <label>data de saida:</label>
+        <input type="endDate" name="endDate" th:field="*{endDate}"/>
+        <input type="submit" value="hotelSearch"/>
+    </form>
+</body>
+</html>
