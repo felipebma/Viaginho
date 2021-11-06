@@ -2,7 +2,7 @@ package com.viaginho.viaginho.controllers;
 
 import javax.servlet.http.HttpSession;
 
-import com.viaginho.viaginho.controladores.AccountControlador;
+import com.viaginho.viaginho.services.AccountService;
 import com.viaginho.viaginho.model.Account;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
     @Autowired
-    AccountControlador accountControlador;
+    AccountService accountService;
 
     @GetMapping("/")
     public ModelAndView login(HttpSession session) {
@@ -38,10 +38,10 @@ public class LoginController {
     @PostMapping("/")
     public ModelAndView createSession(HttpSession session, @ModelAttribute Account account) {
         ModelAndView mv = new ModelAndView("mainScreen");
-        if (!accountControlador.validateAccount(account)) {
+        if (!accountService.validateAccount(account)) {
             return new ModelAndView("redirect:/");
         }
-        account = accountControlador.getAccount(account.getEmail());
+        account = accountService.getAccount(account.getEmail());
         session.setAttribute("account", account);
         mv.addObject("name", account.getName());
         return mv;

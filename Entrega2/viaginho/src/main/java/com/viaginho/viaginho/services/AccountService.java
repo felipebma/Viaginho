@@ -1,4 +1,4 @@
-package com.viaginho.viaginho.controladores;
+package com.viaginho.viaginho.services;
 
 import com.viaginho.viaginho.model.Account;
 import com.viaginho.viaginho.repositories.AccountRepository;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AccountControlador {
+public class AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
