@@ -17,7 +17,7 @@ public class ViaginhoApplication implements CommandLineRunner{
 	}
 	@Override
 	public void run(String... args) throws Exception {
-		accountRepository.save(new Account("ze@ze.ze", "ze", "zeze"));
+		accountRepository.save(new Account("ze@ze", "ze", "zeze"));
 	}
 
 }

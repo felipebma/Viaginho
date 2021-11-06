@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AccountService {
+public class AccountService { // No esquema esse é o LoginControlador
 
     @Autowired
     private AccountRepository accountRepository;
