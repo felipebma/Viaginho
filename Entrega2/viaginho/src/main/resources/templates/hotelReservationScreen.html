@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Viaginho - reservas</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Suas reservas</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>hotel</th>
+                    <th>preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="reservation: ${reservations}">
+                    <td th:text="${reservation.id}">oi</td>
+                    <td th:text="${reservation.hotelName}">oi2</td>
+                    <td th:text="${reservation.price}">oi3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form action="#" th:action="@{/}" th:object="${null}" method="get">
+            <p><input type="submit" value="voltar" /></p>
+          </form>
+    </div>
+</body>
+</html>
