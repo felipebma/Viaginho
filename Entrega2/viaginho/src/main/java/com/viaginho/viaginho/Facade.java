@@ -1,6 +1,9 @@
 package com.viaginho.viaginho;
 
+import java.util.List;
+
 import com.viaginho.viaginho.model.Account;
+import com.viaginho.viaginho.model.HotelReservation;
 import com.viaginho.viaginho.services.AccountService;
 import com.viaginho.viaginho.services.HotelService;
 
@@ -19,6 +22,10 @@ public class Facade {
             return null;
         }
         return accountService.getAccount(account.getEmail());
+    }
+
+    public List<HotelReservation> getReservations(String userEmail) {
+        return hotelService.getReservations(userEmail);
     }
 
 }
