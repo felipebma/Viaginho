@@ -17,6 +17,7 @@ import com.viaginho.viaginho.model.HotelSearchRequest.Filter;
 import com.viaginho.viaginho.model.HotelSearchRequest.Geolocation;
 import com.viaginho.viaginho.model.HotelSearchRequest.Stay;
 import com.viaginho.viaginho.model.HotelSearchResponse.Hotel;
+import com.viaginho.viaginho.services.adapters.HotelAdapterInterface;
 import com.viaginho.viaginho.model.HotelSearchRequest.Occupancy;
 
 import org.springframework.http.HttpEntity;
