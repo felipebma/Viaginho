@@ -1,7 +1,10 @@
 package com.viaginho.viaginho.controllers;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.viaginho.viaginho.Facade;
 import com.viaginho.viaginho.model.HotelSearchData;
 
@@ -25,8 +28,13 @@ public class HotelController {
     }
 
     @PostMapping("/hotel/search")
-    public ModelAndView searchHotel(HttpSession session, @ModelAttribute HotelSearchData hotelSearchData) {
-        System.out.println(hotelSearchData);
-        return new ModelAndView("redirect:/hotal/search");
+    public ModelAndView searchHotel(HttpSession session, @ModelAttribute HotelSearchData hotelSearchData) throws NoSuchAlgorithmException, JsonProcessingException {
+        try {
+            System.out.println(hotelSearchData);
+            facade.getHotels(hotelSearchData);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return new ModelAndView("redirect:/hotel/search");
     }
 }

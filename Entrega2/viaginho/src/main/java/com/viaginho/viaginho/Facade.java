@@ -1,6 +1,10 @@
 package com.viaginho.viaginho;
 
+import java.security.NoSuchAlgorithmException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.viaginho.viaginho.model.Account;
+import com.viaginho.viaginho.model.HotelSearchData;
 import com.viaginho.viaginho.services.AccountService;
 import com.viaginho.viaginho.services.HotelService;
 
@@ -19,6 +23,10 @@ public class Facade {
             return null;
         }
         return accountService.getAccount(account.getEmail());
+    }
+
+    public void getHotels(HotelSearchData hotelSearchData) throws NoSuchAlgorithmException, JsonProcessingException {
+        hotelService.getHotels(hotelSearchData);
     }
 
 }

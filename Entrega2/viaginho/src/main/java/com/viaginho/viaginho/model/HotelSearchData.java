@@ -14,4 +14,6 @@ public class HotelSearchData {
     String city;
     String startDate;
     String endDate;
+    Double latitude;
+    Double longitude;
 }

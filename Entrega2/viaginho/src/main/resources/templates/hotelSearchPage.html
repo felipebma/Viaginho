@@ -9,7 +9,11 @@
 
     <form action="#" th:action="@{/hotel/search}" th:object="${hotelSearchData}" method="post">
         <label>cidade:</label>
-        <input type="text" name="city" th:field="*{city}"/>
+        <select name="city">
+            <option value="recife" th:field="*{city}">Recife</option>
+            <option value="saoPaulo" th:field="*{city}">São Paulo</option>
+            <option value="rioDeJaneiro" th:field="*{city}">Rio de Janeiro</option>
+        </select>
         <label>data de chegada:</label>
         <input type="startDate" name="startDate" th:field="*{startDate}"/>
         <label>data de saida:</label>
