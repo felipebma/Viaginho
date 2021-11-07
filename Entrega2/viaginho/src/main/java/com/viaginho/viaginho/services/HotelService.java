@@ -14,9 +14,7 @@ public class HotelService {
     HotelReservationRepository hotelReservationRepository;
 
     public List<HotelReservation> getReservations(String userEmail) {
-        List<HotelReservation> reservations = hotelReservationRepository.findAllByUserEmail(userEmail);
-        System.out.println(reservations);
-        return reservations;
+        return hotelReservationRepository.findAllByUserEmail(userEmail);
     }
 
 }
