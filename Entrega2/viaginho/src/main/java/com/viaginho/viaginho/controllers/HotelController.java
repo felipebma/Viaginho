@@ -37,7 +37,7 @@ public class HotelController {
     @GetMapping("hotel/reservations")
     public ModelAndView getReservations(HttpSession session){
         ModelAndView mv = new ModelAndView("hotelReservationScreen");
-        if(session.getAttribute("account") == null){
+        if(!ControllerUtils.hasActiveSession(session)){
             return new ModelAndView("redirect:/");
         }
         String userEmail = ((Account)session.getAttribute("account")).getEmail();

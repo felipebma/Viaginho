@@ -2,7 +2,6 @@ package com.viaginho.viaginho.controllers;
 
 import javax.servlet.http.HttpSession;
 
-import com.viaginho.viaginho.services.AccountService;
 import com.viaginho.viaginho.Facade;
 import com.viaginho.viaginho.model.Account;
 
@@ -23,23 +22,24 @@ public class LoginController {// TODO: checar se devemo trocar o nome do login c
     public ModelAndView login(HttpSession session) {
         ModelAndView mv = new ModelAndView("loginScreen");
         mv.addObject("account", new Account());
-        if (session.getAttribute("account") != null) {
+        if (ControllerUtils.hasActiveSession(session)) {
             mv.setViewName("mainScreen");
             mv.addObject("name", ((Account) session.getAttribute("account")).getName());
         }
         return mv;
     }
 
+    
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         session.removeAttribute("account");
         return new ModelAndView("redirect:/");
     }
-
+    
     @PostMapping("/")
     public ModelAndView createSession(HttpSession session, @ModelAttribute Account account) {// TODO: checar nomenclatura (esse deveria ser o login pois recebe o account (segundo o diagrama)?)
         ModelAndView mv = new ModelAndView("mainScreen");
-             
+        
         account = facade.login(account); 
         if (account == null) {
             return new ModelAndView("redirect:/");
@@ -49,4 +49,5 @@ public class LoginController {// TODO: checar se devemo trocar o nome do login c
         mv.addObject("name", account.getName());
         return mv;
     }
+
 }
