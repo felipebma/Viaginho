@@ -1,12 +1,15 @@
 package com.viaginho.viaginho.controllers;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import com.viaginho.viaginho.Facade;
 import com.viaginho.viaginho.model.Account;
+import com.viaginho.viaginho.model.NewAccountDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,15 +26,13 @@ public class LoginController {// TODO: checar se devemo trocar o nome do login c
         if (ControllerUtils.hasActiveSession(session)) {
             return new ModelAndView("mainScreen", "name", ((Account) session.getAttribute("account")).getName());
         }
-        ModelAndView mv = new ModelAndView("loginScreen");
-        mv.addObject("account", new Account());
-        return mv;
+        return new ModelAndView("loginScreen", "account", new Account());
     }
 
     @GetMapping("/register")
-    public ModelAndView register(HttpSession session) {
-        ModelAndView mv = new ModelAndView("registerScreen");
-        mv.addObject("account", new Account());
+    public ModelAndView register(ModelAndView mv) {
+        mv.setViewName("registerScreen");
+        mv.addObject("newAccountDTO", new NewAccountDTO());
         return mv;
     }
 
@@ -39,6 +40,14 @@ public class LoginController {// TODO: checar se devemo trocar o nome do login c
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         session.removeAttribute("account");
+        return new ModelAndView("redirect:/");
+    }
+    
+    @PostMapping("/register")
+    public ModelAndView createAccount(@Valid @ModelAttribute("newAccountDTO") NewAccountDTO newAccountDTO, BindingResult result) {
+        if(result.hasErrors()){
+            return new ModelAndView("registerScreen", result.getModel());
+        }
         return new ModelAndView("redirect:/");
     }
     

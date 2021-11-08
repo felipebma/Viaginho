@@ -27,7 +27,11 @@ public class Facade {
         if (!accountService.validateAccount(account)) {
             return null;
         }
-        return accountService.getAccount(account.getEmail());
+        return accountService.getAccountByEmail(account.getEmail());
+    }
+
+    public boolean accountExists(String email){
+        return accountService.getAccountByEmail(email) != null;
     }
 
     public List<Hotel> getHotels(HotelSearchData hotelSearchData) throws NoSuchAlgorithmException, JsonProcessingException {

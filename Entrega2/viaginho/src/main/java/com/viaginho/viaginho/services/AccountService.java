@@ -21,7 +21,7 @@ public class AccountService { // No esquema esse é o LoginControlador
         return account2 != null && account2.getPassword().equals(account.getPassword());
     }
 
-    public Account getAccount(String email) {
-        return accountRepository.findById(email).orElseThrow();
+    public Account getAccountByEmail(String email) {
+        return accountRepository.findById(email).orElse(null);
     }
 }

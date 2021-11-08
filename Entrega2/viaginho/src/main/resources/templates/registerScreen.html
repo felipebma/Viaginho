@@ -8,16 +8,16 @@
 <body>
     <h1>Create Account</h1>
 
-    <form action="#" th:action="@{/}" th:object="${account}" method="post">
+    <form action="#" th:action="@{/register}" th:object="${newAccountDTO}" method="post">
         <div>
             <table>
                 <tr>
                     <td><label>email:</label></td>
-                    <td><input type="email" name="email" th:field="*{email}"/></td>
+                    <td><input type="email" th:field="*{email}"/></td>
                 </tr>
                 <tr>
                     <td><label>name:</label></td>
-                    <td><input type="text" name="name" th:field="*{name}"/></td>
+                    <td><input type="text" th:field="*{name}"/></td>
                 </tr>
                 <tr>
                     <td><label>password:</label></td>
@@ -26,7 +26,13 @@
             </table>
         </div>
         <div>
+            <button class="button"><a href="/" th:href="@{/}">Back</a></button>
             <input type="submit" value="register"/>
+        </div>
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li class="err" th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
+            </ul>
         </div>
     </form>
 </body>
