@@ -7,19 +7,21 @@
 <body>
     <h1>Suas reservas</h1>
     <div>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
-                    <th>id</th>
                     <th>hotel</th>
                     <th>preço</th>
+                    <th>check-in</th>
+                    <th>check-out</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="reservation: ${reservations}">
-                    <td th:text="${reservation.id}">oi</td>
-                    <td th:text="${reservation.hotelName}">oi2</td>
-                    <td th:text="${reservation.price}">oi3</td>
+                    <td th:text="${reservation.hotelName}"></td>
+                    <td>R$ <span th:text="${#numbers.formatDecimal(reservation.price, 0, 'COMMA', 2, 'POINT')}"></span></td>
+                    <td th:text="${reservation.checkInDate}"></td>
+                    <td th:text="${reservation.checkOutDate}"></td>
                 </tr>
             </tbody>
         </table>
