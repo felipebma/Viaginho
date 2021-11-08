@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Minhas Reservas</h1>
-    <div>
+    <div th:if="${reservations.size > 0}">
         <table border="1">
             <thead>
                 <tr>
@@ -30,5 +30,6 @@
             <p><input type="submit" value="voltar" /></p>
         </form>
     </div>
+    <p style="color: red;" th:if="${reservations.size == 0}">Você ainda não possui nenhuma reserva de hotel</p>
 </body>
 </html>
