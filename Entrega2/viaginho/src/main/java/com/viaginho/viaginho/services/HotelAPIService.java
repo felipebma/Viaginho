@@ -65,16 +65,12 @@ public class HotelAPIService {
 
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Accept-Encoding", "gzip");
         headers.set("Api-key", apiKey);
         headers.set("X-Signature", getXSignature());
 
         HttpEntity<String> entity = new HttpEntity<>(body, headers);
         ResponseEntity<HotelSearchResponse> response = restTemplate.exchange(url, HttpMethod.POST, entity, HotelSearchResponse.class);
 
-        System.out.println("aquiii");
-
-        //return objectMapper.readValue(response.getBody(), HotelSearchResponse.class).hotels;
-        return response.getBody().getHotels();
+        return response.getBody().getHotels().getHotels();
     }
 }

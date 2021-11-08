@@ -39,7 +39,6 @@ public class HotelAdapter implements HotelAdapterInterface{
             hotelSearchData.setLongitude(longitude);
             
             List<Hotel> hotels = hotelAPIService.getHotels(hotelSearchData);
-            System.out.println(hotels.size());
             return hotels;
     }
 }

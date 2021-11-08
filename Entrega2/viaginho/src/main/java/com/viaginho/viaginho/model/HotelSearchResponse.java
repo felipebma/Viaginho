@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class HotelSearchResponse implements Serializable {
     public AuditData auditData;
-    public List<Hotel> hotels;
+    public Hotel hotels;
 
     public static class AuditData implements Serializable {
         String processTime;
@@ -68,6 +68,9 @@ public class HotelSearchResponse implements Serializable {
         List<Rate> rates;
     }
     
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Hotel implements Serializable {
         int code;
         String name;
