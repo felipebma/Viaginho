@@ -12,14 +12,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.viaginho.viaginho.model.HotelSearchData;
 import com.viaginho.viaginho.model.HotelSearchRequest;
-import com.viaginho.viaginho.model.HotelSearchResponse;
 import com.viaginho.viaginho.model.HotelSearchRequest.Filter;
 import com.viaginho.viaginho.model.HotelSearchRequest.Geolocation;
-import com.viaginho.viaginho.model.HotelSearchRequest.Stay;
-import com.viaginho.viaginho.model.HotelSearchResponse.Hotel;
-import com.viaginho.viaginho.services.adapters.HotelAdapterInterface;
 import com.viaginho.viaginho.model.HotelSearchRequest.Occupancy;
+import com.viaginho.viaginho.model.HotelSearchRequest.Stay;
+import com.viaginho.viaginho.model.HotelSearchResponse;
+import com.viaginho.viaginho.model.HotelSearchResponse.Hotel;
 
+import org.apache.tomcat.util.buf.HexUtils;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -37,15 +37,7 @@ public class HotelAPIService {
     private String getXSignature() throws NoSuchAlgorithmException {
         String signature = apiKey + secret + Long.toString(new Date().getTime()/1000);
         MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[]hashInBytes = md.digest(signature.getBytes(StandardCharsets.UTF_8));
-
-        //bytes to hex
-        StringBuilder sb = new StringBuilder();
-        for (byte b : hashInBytes) {
-            sb.append(String.format("%02x", b));
-        }
-
-        return sb.toString();
+        return HexUtils.toHexString(md.digest(signature.getBytes(StandardCharsets.UTF_8)));
     }
 
     public List<Hotel> getHotels(HotelSearchData hotelSearchData) throws NoSuchAlgorithmException, JsonProcessingException {
