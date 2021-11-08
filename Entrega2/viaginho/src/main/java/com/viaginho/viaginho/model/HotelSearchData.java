@@ -1,5 +1,7 @@
 package com.viaginho.viaginho.model;
 
+import com.viaginho.viaginho.model.validation.HotelSearchDataValidation.HotelSearchDataValid;
+
 import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@HotelSearchDataValid(message = "Datas inválidas")
 public class HotelSearchData {
     String city;
     String startDate;

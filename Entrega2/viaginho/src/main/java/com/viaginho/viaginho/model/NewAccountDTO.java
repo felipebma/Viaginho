@@ -3,7 +3,7 @@ package com.viaginho.viaginho.model;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-import com.viaginho.viaginho.model.validation.NewAccountEmail;
+import com.viaginho.viaginho.model.validation.NewAccountValidation.NewAccountEmail;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

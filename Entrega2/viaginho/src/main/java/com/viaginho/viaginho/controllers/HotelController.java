@@ -4,6 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.viaginho.viaginho.Facade;
@@ -14,6 +15,7 @@ import com.viaginho.viaginho.model.HotelSearchResponse.Hotel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,11 +39,15 @@ public class HotelController {
     }
 
     @PostMapping("/hotel/search")
-    public ModelAndView searchHotel(HttpSession session, @ModelAttribute HotelSearchData hotelSearchData)
-            throws NoSuchAlgorithmException, JsonProcessingException {
+    public ModelAndView searchHotel(HttpSession session, @Valid @ModelAttribute HotelSearchData hotelSearchData,
+            BindingResult result) throws NoSuchAlgorithmException, JsonProcessingException {
         try {
             if (!ControllerUtils.hasActiveSession(session)) {
                 return new ModelAndView("redirect:/");
+            }
+            System.out.println(result);
+            if (result.hasErrors()) {
+                return new ModelAndView("hotelSearchPage", result.getModel());
             }
             List<Hotel> hotels = facade.getHotels(hotelSearchData);
             session.setAttribute("hotels", hotels);

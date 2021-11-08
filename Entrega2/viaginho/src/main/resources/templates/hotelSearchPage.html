@@ -19,6 +19,12 @@
         <label>data de saida:</label>
         <input type="date" name="endDate" th:field="*{endDate}"/>
         <input type="submit" value="hotelSearch"/>
+
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li style="color: red;" class="err" th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
+            </ul>
+        </div>
     </form>
 
     <form action="#" th:action="@{/}" th:object="${null}" method="get">
