@@ -12,19 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HotelSearchResponse implements Serializable {
-    public AuditData auditData;
     public Hotel hotels;
-
-    public static class AuditData implements Serializable {
-        String processTime;
-        String timestamp;
-        String requestHost;
-        String serverId;
-        String environment;
-        String release;
-        String token;
-        String internal;
-    }
     
     public static class CancellationPolicy implements Serializable {
         String amount;
