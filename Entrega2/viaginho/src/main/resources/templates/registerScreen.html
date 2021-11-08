@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <h1>Create Account</h1>
+    <h1>Criar Conta</h1>
 
     <form action="#" th:action="@{/register}" th:object="${newAccountDTO}" method="post">
         <div>
@@ -16,18 +16,18 @@
                     <td><input type="email" th:field="*{email}"/></td>
                 </tr>
                 <tr>
-                    <td><label>name:</label></td>
+                    <td><label>nome:</label></td>
                     <td><input type="text" th:field="*{name}"/></td>
                 </tr>
                 <tr>
-                    <td><label>password:</label></td>
+                    <td><label>senha:</label></td>
                     <td><input type="password" name="password" th:field="*{password}"/></td>
                 </tr>
             </table>
         </div>
         <div>
-            <button class="button"><a href="/" th:href="@{/}">Back</a></button>
-            <input type="submit" value="register"/>
+            <button class="button"><a href="/" th:href="@{/}">voltar</a></button>
+            <input type="submit" value="cadastrar"/>
         </div>
         <div th:if="${#fields.hasAnyErrors()}">
             <ul>

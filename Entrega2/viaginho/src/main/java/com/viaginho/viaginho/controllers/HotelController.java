@@ -33,7 +33,7 @@ public class HotelController {
         if (!ControllerUtils.hasActiveSession(session)) {
             return new ModelAndView("redirect:/");
         }
-        ModelAndView mv = new ModelAndView("hotelSearchPage");
+        ModelAndView mv = new ModelAndView("hotelSearchScreen");
         mv.addObject("hotelSearchData", new HotelSearchData());
         return mv;
     }
@@ -47,7 +47,7 @@ public class HotelController {
             }
             System.out.println(result);
             if (result.hasErrors()) {
-                return new ModelAndView("hotelSearchPage", result.getModel());
+                return new ModelAndView("hotelSearchScreen", result.getModel());
             }
             List<Hotel> hotels = facade.getHotels(hotelSearchData);
             session.setAttribute("hotels", hotels);

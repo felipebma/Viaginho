@@ -20,10 +20,11 @@ public class InitializeDatabases implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		accountRepository.save(new Account("ze@ze", "ze", "zeze"));
-		hotelReservationRepository
-				.save(new HotelReservation("COP", "Copacabana Palace", "ze@ze", "2021-12-27", "2021-12-31", 50000.0));
+		hotelReservationRepository.deleteAll();
 		hotelReservationRepository.save(
-				new HotelReservation("INT", "Intercity Ibirapuera", "ze@ze", "2022-01-01", "2022-01-10", 50000.0));
+				new HotelReservation("#1", "COP", "Copacabana Palace", "ze@ze", "2021-12-27", "2021-12-31", 500.0));
+		hotelReservationRepository.save(
+				new HotelReservation("#2", "INT", "Intercity Ibirapuera", "ze@ze", "2022-01-01", "2022-01-10", 75.0));
 	}
 
 }
