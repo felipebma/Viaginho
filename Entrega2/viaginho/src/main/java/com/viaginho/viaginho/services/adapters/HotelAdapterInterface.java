@@ -1,6 +1,5 @@
 package com.viaginho.viaginho.services.adapters;
 
-import java.security.InvalidParameterException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
