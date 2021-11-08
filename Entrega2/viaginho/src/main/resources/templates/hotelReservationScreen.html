@@ -19,7 +19,7 @@
             <tbody>
                 <tr th:each="reservation: ${reservations}">
                     <td th:text="${reservation.hotelName}"></td>
-                    <td>R$ <span th:text="${#numbers.formatDecimal(reservation.price, 0, 'COMMA', 2, 'POINT')}"></span></td>
+                    <td>€ <span th:text="${#numbers.formatDecimal(reservation.price, 0, 'COMMA', 2, 'POINT')}"></span></td>
                     <td th:text="${reservation.checkInDate}"></td>
                     <td th:text="${reservation.checkOutDate}"></td>
                 </tr>

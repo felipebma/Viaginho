@@ -21,7 +21,7 @@
                     <td th:text="${hotel.name}"></td>
                     <td>
                         <div class="selectReservation">
-                            <span th:text="${hotel.minRate}"></span>
+                            <span>€ <span th:text="${#numbers.formatDecimal(hotel.minRate, 0, 'COMMA', 2, 'POINT')}"></span></span> 
                             <form action="#" method="POST" th:action="@{/hotel/reservations/{cheapest}/{hotelId}(cheapest=true,hotelId=${hotelIter.index})}" th:object="${hotels}">
                                 <button type="submit" class="button">reservar</button>
                             </form>
@@ -29,7 +29,7 @@
                     </td>
                     <td>
                         <div class="selectReservation">
-                            <span th:text="${hotel.maxRate}"></span>
+                            <span>€ <span th:text="${#numbers.formatDecimal(hotel.maxRate, 0, 'COMMA', 2, 'POINT')}"></span></span> 
                             <form action="#" method="POST" th:action="@{/hotel/reservations/{cheapest}/{hotelId}(cheapest=false,hotelId=${hotelIter.index})}" th:object="${hotels}">
                                 <button type="submit" class="button">reservar</button>
                             </form>
