@@ -20,12 +20,18 @@ public class LoginController {// TODO: checar se devemo trocar o nome do login c
 
     @GetMapping("/")
     public ModelAndView login(HttpSession session) {
+        if (ControllerUtils.hasActiveSession(session)) {
+            return new ModelAndView("mainScreen", "name", ((Account) session.getAttribute("account")).getName());
+        }
         ModelAndView mv = new ModelAndView("loginScreen");
         mv.addObject("account", new Account());
-        if (ControllerUtils.hasActiveSession(session)) {
-            mv.setViewName("mainScreen");
-            mv.addObject("name", ((Account) session.getAttribute("account")).getName());
-        }
+        return mv;
+    }
+
+    @GetMapping("/register")
+    public ModelAndView register(HttpSession session) {
+        ModelAndView mv = new ModelAndView("registerScreen");
+        mv.addObject("account", new Account());
         return mv;
     }
 
