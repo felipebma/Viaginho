@@ -20,15 +20,15 @@ public class HotelAdapter implements HotelAdapterInterface{
     public List<Hotel> getHotels(HotelSearchData hotelSearchData) throws NoSuchAlgorithmException, JsonProcessingException {
           Double latitude, longitude;
             switch(hotelSearchData.getCity()) {
-                case "recife":
+                case "Recife":
                     latitude = -8.05428;
                     longitude = -34.8813;
                     break;
-                case "saoPaulo":
+                case "São Paulo":
                     latitude = -23.5489;
                     longitude = -46.6388;
                     break;
-                case "rioDeJaneiro":
+                case "Rio De Janeiro":
                     latitude = -22.9035;
                     longitude = -43.2096;
                     break;

@@ -5,6 +5,8 @@ import java.security.NoSuchAlgorithmException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.viaginho.viaginho.model.Account;
 import com.viaginho.viaginho.model.HotelSearchData;
+import com.viaginho.viaginho.model.HotelSearchResponse.Hotel;
+
 import java.util.List;
 
 import com.viaginho.viaginho.model.HotelReservation;
@@ -28,8 +30,8 @@ public class Facade {
         return accountService.getAccount(account.getEmail());
     }
 
-    public void getHotels(HotelSearchData hotelSearchData) throws NoSuchAlgorithmException, JsonProcessingException {
-        hotelService.getHotels(hotelSearchData);
+    public List<Hotel> getHotels(HotelSearchData hotelSearchData) throws NoSuchAlgorithmException, JsonProcessingException {
+        return hotelService.getHotels(hotelSearchData);
     }
 
     public List<HotelReservation> getReservations(String userEmail) {

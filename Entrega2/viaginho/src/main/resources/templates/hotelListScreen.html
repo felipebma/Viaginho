@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Viaginho - hotels</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1 th:text="'Resultado da busca por hotéis em ' + ${searchData.city}"/>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hotel</th>
+                    <th>Opção de quarto mais barata</th>
+                    <th>Opção de quarto mais cara</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="hotel: ${hotels}">
+                    <td th:text="${hotel.name}">oi</td>
+                    <td th:text="${hotel.minRate}">oi2</td>
+                    <td th:text="${hotel.maxRate}">oi3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form action="#" th:action="@{/hotel/search}" th:object="${null}" method="get">
+            <p><input type="submit" value="voltar" /></p>
+        </form>
+    </div>
+</body>
+</html>

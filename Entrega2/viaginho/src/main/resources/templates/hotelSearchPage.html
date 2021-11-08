@@ -10,15 +10,19 @@
     <form action="#" th:action="@{/hotel/search}" th:object="${hotelSearchData}" method="post">
         <label>cidade:</label>
         <select name="city">
-            <option value="recife" th:field="*{city}">Recife</option>
-            <option value="saoPaulo" th:field="*{city}">São Paulo</option>
-            <option value="rioDeJaneiro" th:field="*{city}">Rio de Janeiro</option>
+            <option value="Recife" th:field="*{city}">Recife</option>
+            <option value="São Paulo" th:field="*{city}">São Paulo</option>
+            <option value="Rio De Janeiro" th:field="*{city}">Rio de Janeiro</option>
         </select>
         <label>data de chegada:</label>
         <input type="startDate" name="startDate" th:field="*{startDate}"/>
         <label>data de saida:</label>
         <input type="endDate" name="endDate" th:field="*{endDate}"/>
         <input type="submit" value="hotelSearch"/>
+    </form>
+
+    <form action="#" th:action="@{/}" th:object="${null}" method="get">
+        <p><input type="submit" value="voltar" /></p>
     </form>
 </body>
 </html>

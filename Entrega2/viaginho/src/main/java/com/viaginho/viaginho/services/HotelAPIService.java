@@ -30,8 +30,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class HotelAPIService {
-    private String apiKey = "cdab54fe60813921e59bf2ef12f5d61b";
-    private String secret = "2b3434ea9a";
+    private String apiKey = "f20f73f205f227545329991990abef5b";
+    private String secret = "cc5b9bb2e8";
     private String baseUrl = "https://api.test.hotelbeds.com";
 
     private String getXSignature() throws NoSuchAlgorithmException {
