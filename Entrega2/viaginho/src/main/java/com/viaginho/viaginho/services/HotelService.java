@@ -20,6 +20,10 @@ public class HotelService {
     @Autowired
     HotelReservationRepository hotelReservationRepository;
 
+    public HotelReservation createReservation(HotelReservation hotelReservation) {
+        return hotelReservationRepository.save(hotelReservation);
+    }
+
     public List<HotelReservation> getReservations(String userEmail) {
         return hotelReservationRepository.findAllByUserEmail(userEmail);
     }

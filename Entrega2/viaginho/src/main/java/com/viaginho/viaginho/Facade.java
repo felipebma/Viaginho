@@ -30,16 +30,21 @@ public class Facade {
         return accountService.getAccountByEmail(account.getEmail());
     }
 
-    public boolean accountExists(String email){
+    public boolean accountExists(String email) {
         return accountService.getAccountByEmail(email) != null;
     }
 
-    public List<Hotel> getHotels(HotelSearchData hotelSearchData) throws NoSuchAlgorithmException, JsonProcessingException {
+    public List<Hotel> getHotels(HotelSearchData hotelSearchData)
+            throws NoSuchAlgorithmException, JsonProcessingException {
         return hotelService.getHotels(hotelSearchData);
     }
 
     public List<HotelReservation> getReservations(String userEmail) {
         return hotelService.getReservations(userEmail);
+    }
+
+    public HotelReservation createHotelReservation(HotelReservation hotelReservation) {
+        return hotelService.createReservation(hotelReservation);
     }
 
 }

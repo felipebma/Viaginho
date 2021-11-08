@@ -13,19 +13,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class HotelReservation {
     @Id
-    Long id;
+    String id;
     String hotelId;
     String hotelName;
     String userEmail;
     // Room room;
-    // Date checkInDate;
-    // Date checkOutDate;
+    String checkInDate;
+    String checkOutDate;
     Double price;
 
-    public HotelReservation(Long id, String hotelName, String userEmail, Double price){
-        this.id = id;
+    public HotelReservation(String hotelId, String hotelName, String userEmail, String checkInDate, String checkOutDate,
+            Double price) {
+        this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.userEmail = userEmail;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
         this.price = price;
     }
+
 }

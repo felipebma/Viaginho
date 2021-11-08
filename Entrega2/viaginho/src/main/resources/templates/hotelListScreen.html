@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
     <title>Viaginho - hotels</title> 
+    <link th:href="@{/styles/hotelListScreen.css}" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
     <h1 th:text="'Resultado da busca por hotéis em ' + ${searchData.city}"/>
     <div>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>Hotel</th>
@@ -16,10 +17,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="hotel: ${hotels}">
-                    <td th:text="${hotel.name}">oi</td>
-                    <td th:text="${hotel.minRate}">oi2</td>
-                    <td th:text="${hotel.maxRate}">oi3</td>
+                <tr th:each="hotel, hotelIter: ${hotels}">
+                    <td th:text="${hotel.name}"></td>
+                    <td>
+                        <div class="selectReservation">
+                            <span th:text="${hotel.minRate}"></span>
+                            <form action="#" method="POST" th:action="@{/hotel/reservations/{cheapest}/{hotelId}(cheapest=true,hotelId=${hotelIter.index})}" th:object="${hotels}">
+                                <button type="submit" class="button">reservar</button>
+                            </form>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="selectReservation">
+                            <span th:text="${hotel.maxRate}"></span>
+                            <form action="#" method="POST" th:action="@{/hotel/reservations/{cheapest}/{hotelId}(cheapest=false,hotelId=${hotelIter.index})}" th:object="${hotels}">
+                                <button type="submit" class="button">reservar</button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
