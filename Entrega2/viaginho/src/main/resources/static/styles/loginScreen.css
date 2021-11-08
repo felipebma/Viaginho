@@ -1,0 +1,30 @@
+body{
+    margin: 10%;
+    align-content: center;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+table{
+    justify-self: center;
+    align-self: center;
+    margin: 30px 0;
+}
+
+table label{
+    width: fit-content;
+    text-align: center;
+}
+
+form div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button{
+    margin-left: 10px;
+}
