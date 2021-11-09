@@ -7,9 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <h1 th:text="'Resultado da busca por hotéis em ' + ${searchData.city}"/>
+    <h1 th:text="'Resultado da busca por hotéis em ' + ${searchData.city} + ' ('+ ${searchData.startDate} + ' até ' + ${searchData.endDate}+')'"/>
     <div>
-        <table border="1">
+        <table border="1" th:if="${hotels.size > 0}">
             <thead>
                 <tr>
                     <th>Hotel</th>
@@ -39,6 +39,7 @@
                 </tr>
             </tbody>
         </table>
+        <p style="color: red;" th:if="${hotels.size == 0}">Não foi possível encontrar hotel disponível para essa cidade nas datas especificadas</p>
 
         <form action="#" th:action="@{/hotel/search}" th:object="${null}" method="get">
             <p><input type="submit" value="voltar" /></p>
