@@ -1,6 +1,7 @@
 package com.viaginho.viaginho.controllers;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -49,7 +50,8 @@ public class HotelController {
             if (result.hasErrors()) {
                 return new ModelAndView("hotelSearchScreen", result.getModel());
             }
-            List<Hotel> hotels = facade.getHotels(hotelSearchData);
+            // List<Hotel> hotels = facade.getHotels(hotelSearchData);
+            List<Hotel> hotels = new ArrayList<>();
             session.setAttribute("hotels", hotels);
             session.setAttribute("startDate", hotelSearchData.getStartDate());
             session.setAttribute("endDate", hotelSearchData.getEndDate());
