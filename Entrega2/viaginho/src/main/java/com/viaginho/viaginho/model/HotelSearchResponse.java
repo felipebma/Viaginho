@@ -13,23 +13,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class HotelSearchResponse implements Serializable {
     public Hotel hotels;
-    
+
     public static class CancellationPolicy implements Serializable {
         String amount;
         Date from;
     }
-    
+
     public static class Promotion implements Serializable {
         String code;
         String name;
     }
-    
+
     public static class Offer implements Serializable {
         String code;
         String name;
         String amount;
     }
-    
+
     public static class Rate implements Serializable {
         String rateKey;
         String rateClass;
@@ -49,13 +49,13 @@ public class HotelSearchResponse implements Serializable {
         List<Promotion> promotions;
         List<Offer> offers;
     }
-    
+
     public static class Room implements Serializable {
         String code;
         String name;
         List<Rate> rates;
     }
-    
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor

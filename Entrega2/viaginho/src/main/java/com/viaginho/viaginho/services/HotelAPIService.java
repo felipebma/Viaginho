@@ -6,7 +6,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,7 +16,7 @@ import com.viaginho.viaginho.model.HotelSearchRequest.Geolocation;
 import com.viaginho.viaginho.model.HotelSearchRequest.Occupancy;
 import com.viaginho.viaginho.model.HotelSearchRequest.Stay;
 import com.viaginho.viaginho.model.HotelSearchResponse;
-import com.viaginho.viaginho.model.HotelSearchResponse.Hotel;
+import com.viaginho.viaginho.model.ListHotel;
 
 import org.apache.tomcat.util.buf.HexUtils;
 import org.springframework.http.HttpEntity;
@@ -35,22 +34,24 @@ public class HotelAPIService {
     private String baseUrl = "https://api.test.hotelbeds.com";
 
     private String getXSignature() throws NoSuchAlgorithmException {
-        String signature = apiKey + secret + Long.toString(new Date().getTime()/1000);
+        String signature = apiKey + secret + Long.toString(new Date().getTime() / 1000);
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         return HexUtils.toHexString(md.digest(signature.getBytes(StandardCharsets.UTF_8)));
     }
 
-    public List<Hotel> getHotels(HotelSearchData hotelSearchData) throws NoSuchAlgorithmException, JsonProcessingException {
+    public ListHotel getHotels(HotelSearchData hotelSearchData)
+            throws NoSuchAlgorithmException, JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         HotelSearchRequest hotelSearchRequest = new HotelSearchRequest();
         ObjectMapper objectMapper = new ObjectMapper();
         String url = baseUrl + "/hotel-api/1.0/hotels";
         String body;
-        
+
         hotelSearchRequest.setStay(new Stay(hotelSearchData.getStartDate(), hotelSearchData.getEndDate()));
-        hotelSearchRequest.setGeolocation(new Geolocation(hotelSearchData.getLatitude(), hotelSearchData.getLongitude(), 20, "km"));
-        hotelSearchRequest.setOccupancies(Arrays.asList(new Occupancy(1,1,0)));
+        hotelSearchRequest.setGeolocation(
+                new Geolocation(hotelSearchData.getLatitude(), hotelSearchData.getLongitude(), 20, "km"));
+        hotelSearchRequest.setOccupancies(Arrays.asList(new Occupancy(1, 1, 0)));
         hotelSearchRequest.setFilter(new Filter(20));
 
         body = objectMapper.writeValueAsString(hotelSearchRequest);
@@ -61,8 +62,9 @@ public class HotelAPIService {
         headers.set("X-Signature", getXSignature());
 
         HttpEntity<String> entity = new HttpEntity<>(body, headers);
-        ResponseEntity<HotelSearchResponse> response = restTemplate.exchange(url, HttpMethod.POST, entity, HotelSearchResponse.class);
+        ResponseEntity<HotelSearchResponse> response = restTemplate.exchange(url, HttpMethod.POST, entity,
+                HotelSearchResponse.class);
 
-        return response.getBody().getHotels().getHotels();
+        return new ListHotel(response.getBody().getHotels().getHotels());
     }
 }

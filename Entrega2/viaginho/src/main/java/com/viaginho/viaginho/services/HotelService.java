@@ -1,12 +1,12 @@
 package com.viaginho.viaginho.services;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.viaginho.viaginho.model.HotelReservation;
 import com.viaginho.viaginho.model.HotelSearchData;
-import com.viaginho.viaginho.model.HotelSearchResponse.Hotel;
+import com.viaginho.viaginho.model.ListHotel;
+import com.viaginho.viaginho.model.ListHotelReservation;
 import com.viaginho.viaginho.repositories.HotelReservationRepository;
 import com.viaginho.viaginho.services.adapters.HotelAdapterInterface;
 
@@ -24,11 +24,11 @@ public class HotelService {
         return hotelReservationRepository.save(hotelReservation);
     }
 
-    public List<HotelReservation> getReservations(String userEmail) {
-        return hotelReservationRepository.findAllByUserEmail(userEmail);
+    public ListHotelReservation getReservations(String userEmail) {
+        return new ListHotelReservation(hotelReservationRepository.findAllByUserEmail(userEmail));
     }
 
-    public List<Hotel> getHotels(HotelSearchData hotelSearchData)
+    public ListHotel getHotels(HotelSearchData hotelSearchData)
             throws NoSuchAlgorithmException, JsonProcessingException {
         return hotelAdapter.getHotels(hotelSearchData);
     }

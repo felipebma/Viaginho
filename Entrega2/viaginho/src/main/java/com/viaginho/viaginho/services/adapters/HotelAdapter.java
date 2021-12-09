@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.viaginho.viaginho.model.HotelSearchData;
+import com.viaginho.viaginho.model.ListHotel;
 import com.viaginho.viaginho.model.HotelSearchResponse.Hotel;
 import com.viaginho.viaginho.services.HotelAPIService;
 
@@ -18,29 +19,28 @@ public class HotelAdapter implements HotelAdapterInterface {
     HotelAPIService hotelAPIService;
 
     @Override
-    public List<Hotel> getHotels(HotelSearchData hotelSearchData)
+    public ListHotel getHotels(HotelSearchData hotelSearchData)
             throws NoSuchAlgorithmException, JsonProcessingException {
         Double latitude, longitude;
         switch (hotelSearchData.getCity()) {
-        case "Recife":
-            latitude = -8.05428;
-            longitude = -34.8813;
-            break;
-        case "São Paulo":
-            latitude = -23.5489;
-            longitude = -46.6388;
-            break;
-        case "Rio De Janeiro":
-            latitude = -22.9035;
-            longitude = -43.2096;
-            break;
-        default:
-            throw new InvalidParameterException("Cidade invalida");
+            case "Recife":
+                latitude = -8.05428;
+                longitude = -34.8813;
+                break;
+            case "São Paulo":
+                latitude = -23.5489;
+                longitude = -46.6388;
+                break;
+            case "Rio De Janeiro":
+                latitude = -22.9035;
+                longitude = -43.2096;
+                break;
+            default:
+                throw new InvalidParameterException("Cidade invalida");
         }
         hotelSearchData.setLatitude(latitude);
         hotelSearchData.setLongitude(longitude);
 
-        List<Hotel> hotels = hotelAPIService.getHotels(hotelSearchData);
-        return hotels;
+       return hotelAPIService.getHotels(hotelSearchData);
     }
 }

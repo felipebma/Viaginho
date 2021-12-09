@@ -49,7 +49,7 @@ public class HotelController {
             if (result.hasErrors()) {
                 return new ModelAndView("hotelSearchScreen", result.getModel());
             }
-            List<Hotel> hotels = facade.getHotels(hotelSearchData);
+            List<Hotel> hotels = facade.getHotels(hotelSearchData).getHotels();
             session.setAttribute("hotels", hotels);
             session.setAttribute("startDate", hotelSearchData.getStartDate());
             session.setAttribute("endDate", hotelSearchData.getEndDate());
@@ -69,7 +69,7 @@ public class HotelController {
             return new ModelAndView("redirect:/");
         }
         String userEmail = ((Account) session.getAttribute("account")).getEmail();
-        List<HotelReservation> reservations = facade.getReservations(userEmail);
+        List<HotelReservation> reservations = facade.getReservations(userEmail).getReservations();
         mv.addObject("reservations", reservations);
         return mv;
     }
