@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class LoginController {// TODO: checar se devemo trocar o nome do login com o createSession 
+public class LoginController {
 
     @Autowired
     Facade facade;
@@ -36,13 +36,13 @@ public class LoginController {// TODO: checar se devemo trocar o nome do login c
         return mv;
     }
 
-    
+
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         session.removeAttribute("account");
         return new ModelAndView("redirect:/");
     }
-    
+
     @PostMapping("/register")
     public ModelAndView createAccount(@Valid @ModelAttribute("newAccountDTO") NewAccountDTO newAccountDTO, BindingResult result) {
         if(result.hasErrors()){
@@ -50,19 +50,18 @@ public class LoginController {// TODO: checar se devemo trocar o nome do login c
         }
         return new ModelAndView("redirect:/");
     }
-    
+
     @PostMapping("/")
-    public ModelAndView createSession(HttpSession session, @ModelAttribute Account account) {// TODO: checar nomenclatura (esse deveria ser o login pois recebe o account (segundo o diagrama)?)
+    public ModelAndView createSession(HttpSession session, @ModelAttribute Account account) {
         ModelAndView mv = new ModelAndView("mainScreen");
-        
-        account = facade.login(account); 
+
+        account = facade.login(account);
         if (account == null) {
             return new ModelAndView("redirect:/");
         }
-        
+
         session.setAttribute("account", account);
         mv.addObject("name", account.getName());
         return mv;
     }
-
 }
