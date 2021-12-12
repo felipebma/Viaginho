@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+<<<<<<< HEAD
 public class LoginController {
+=======
+public class LoginController {// TODO: checar se devemo trocar o nome do login com o createSession
+>>>>>>> Fix Create Account use case
 
     @Autowired
     Facade facade;
@@ -36,7 +40,10 @@ public class LoginController {
         return mv;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Fix Create Account use case
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         session.removeAttribute("account");
@@ -44,15 +51,25 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public ModelAndView createAccount(@Valid @ModelAttribute("newAccountDTO") NewAccountDTO newAccountDTO, BindingResult result) {
-        if(result.hasErrors()){
+    public ModelAndView createAccount(@Valid @ModelAttribute("newAccountDTO") NewAccountDTO newAccountDTO,
+            BindingResult result) {
+        if (result.hasErrors()) {
             return new ModelAndView("registerScreen", result.getModel());
         }
+        facade.createAccount(newAccountDTO.toAccount());
         return new ModelAndView("redirect:/");
     }
 
     @PostMapping("/")
+<<<<<<< HEAD
     public ModelAndView createSession(HttpSession session, @ModelAttribute Account account) {
+=======
+    public ModelAndView createSession(HttpSession session, @ModelAttribute Account account) {// TODO: checar
+                                                                                             // nomenclatura (esse
+                                                                                             // deveria ser o login pois
+                                                                                             // recebe o account
+                                                                                             // (segundo o diagrama)?)
+>>>>>>> Fix Create Account use case
         ModelAndView mv = new ModelAndView("mainScreen");
 
         account = facade.login(account);
