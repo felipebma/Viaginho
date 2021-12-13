@@ -1,0 +1,44 @@
+body{
+    margin: 10%;
+    align-content: center;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+table{
+    justify-self: center;
+    align-self: center;
+    margin: 10px 0;
+}
+
+table label{
+    width: fit-content;
+    text-align: center;
+}
+
+form div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button{
+    margin: 0 10px;
+}
+
+.buttons{
+    flex-direction: column;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.err{
+    color: red;
+}

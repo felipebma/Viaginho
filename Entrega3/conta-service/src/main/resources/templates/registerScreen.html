@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Viaginho - Register</title> 
+    <link th:href="@{/styles/loginScreen.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Criar Conta</h1>
+
+    <form action="#" th:action="@{/register}" th:object="${newAccountDTO}" method="post">
+        <div>
+            <table>
+                <tr>
+                    <td><label>email:</label></td>
+                    <td><input type="email" th:field="*{email}"/></td>
+                </tr>
+                <tr>
+                    <td><label>nome:</label></td>
+                    <td><input type="text" th:field="*{name}"/></td>
+                </tr>
+                <tr>
+                    <td><label>senha:</label></td>
+                    <td><input type="password" name="password" th:field="*{password}"/></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button class="button"><a href="/" th:href="@{/}">voltar</a></button>
+            <input type="submit" value="cadastrar"/>
+        </div>
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li class="err" th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
+            </ul>
+        </div>
+    </form>
+</body>
+</html>

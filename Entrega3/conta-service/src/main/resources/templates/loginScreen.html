@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Viaginho - Login</title>
+        <link th:href="@{/styles/loginScreen.css}" rel="stylesheet" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1>Viaginho</h1>
+
+        <form action="#" th:action="@{/}" th:object="${account}" method="post">
+            <div>
+                <table>
+                    <tr>
+                        <td><label>email:</label></td>
+                        <td><input type="email" name="email" th:field="*{email}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>senha:</label></td>
+                        <td><input type="password" name="password" th:field="*{password}"/></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="buttons">
+                <input type="submit" value="login"/>
+                <button>
+                    <a href="#" th:href="@{/register}">criar nova conta</a>
+                </button>
+            </div>
+        </form>
+    </body>
+</html>

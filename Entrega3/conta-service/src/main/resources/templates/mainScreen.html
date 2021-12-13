@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Viaginho - Home</title> 
+    <link th:href="@{/styles/general.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Home</h1>
+    <p>Usuário: <span th:text="${name}"></span></p>
+    <a href="/hotel/reservations">Minhas reservas</a>
+    <br>
+    <a href="/hotel/search">Buscar hotéis</a>
+    <br>
+    <a href="/" th:href="@{/logout}">Sair</a>
+</body>
+</html>
