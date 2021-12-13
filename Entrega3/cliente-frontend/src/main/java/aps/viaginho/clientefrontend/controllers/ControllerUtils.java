@@ -1,11 +1,11 @@
-package aps.viaginho.contaservice.controllers;
+package aps.viaginho.clientefrontend.controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
-import aps.viaginho.contaservice.model.Account;
+import aps.viaginho.clientefrontend.model.Account;
 
 public class ControllerUtils {
 

@@ -1,11 +1,7 @@
-package com.viaginho.viaginho.controllers;
+package aps.viaginho.clientefrontend.controllers;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
-import com.viaginho.viaginho.Facade;
-import com.viaginho.viaginho.model.Account;
-import com.viaginho.viaginho.model.NewAccountDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import aps.viaginho.clientefrontend.Facade;
+import aps.viaginho.clientefrontend.model.Account;
+import aps.viaginho.clientefrontend.model.NewAccountDTO;
+
 @Controller
-public class LoginController {
+public class AccountController {
 
     @Autowired
     Facade facade;
@@ -65,4 +65,5 @@ public class LoginController {
         mv.addObject("name", account.getName());
         return mv;
     }
+
 }

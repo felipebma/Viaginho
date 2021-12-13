@@ -22,6 +22,7 @@ public class AccountService {
     }
 
     public Account getAccountByEmail(String email) {
+        System.out.println(email);
         return accountRepository.findById(email).orElse(null);
     }
 

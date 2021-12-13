@@ -27,4 +27,12 @@ public class Facade {
         return accountService.getAccountByEmail(email) != null;
     }
 
+    public boolean validateAccount(Account account) {
+        return accountService.validateAccount(account);
+    }
+
+    public Account getAccountByEmail(String email) {
+        return accountService.getAccountByEmail(email);
+    }
+
 }
