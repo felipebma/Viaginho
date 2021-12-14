@@ -12,7 +12,7 @@ import aps.viaginho.clientefrontend.model.HotelReservation;
 import aps.viaginho.clientefrontend.model.HotelSearchData;
 import aps.viaginho.clientefrontend.model.HotelSearchResponse.Hotel;
 
-@FeignClient(name = "hotel-service", url = "localhost:8082/")
+@FeignClient(name = "hotel-service")
 public interface HotelServiceProxy {
 
     @PostMapping

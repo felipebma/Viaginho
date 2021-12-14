@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import aps.viaginho.clientefrontend.model.Account;
 
-@FeignClient(name = "conta-service", url = "localhost:8081")
+@FeignClient(name = "conta-service")
 public interface AccountServiceProxy {
 
     @PostMapping
