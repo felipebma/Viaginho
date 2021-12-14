@@ -17,10 +17,7 @@ public class Facade {
     }
 
     public Account login(Account account) {
-        if (!accountService.validateAccount(account)) {
-            return null;
-        }
-        return accountService.getAccountByEmail(account.getEmail());
+        return accountService.login(account);
     }
 
     public boolean accountExists(String email) {

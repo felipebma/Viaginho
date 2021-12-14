@@ -12,6 +12,13 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
+    public Account login(Account account) {
+        if (!validateAccount(account)) {
+            return null;
+        }
+        return getAccountByEmail(account.getEmail());
+    }
+
     public Account createAccount(Account account) {
         return accountRepository.save(account);
     }

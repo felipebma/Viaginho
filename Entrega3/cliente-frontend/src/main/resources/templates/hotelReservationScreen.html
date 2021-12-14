@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Viaginho - reservas</title> 
+    <link th:href="@{/styles/general.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Minhas Reservas</h1>
+    <div th:if="${reservations.size > 0}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>hotel</th>
+                    <th>preço</th>
+                    <th>check-in</th>
+                    <th>check-out</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="reservation: ${reservations}">
+                    <td th:text="${reservation.hotelName}"></td>
+                    <td>€ <span th:text="${#numbers.formatDecimal(reservation.price, 0, 'COMMA', 2, 'POINT')}"></span></td>
+                    <td th:text="${reservation.checkInDate}"></td>
+                    <td th:text="${reservation.checkOutDate}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form action="#" th:action="@{/}" th:object="${null}" method="get">
+            <p><input type="submit" value="voltar" /></p>
+        </form>
+    </div>
+    <p style="color: red;" th:if="${reservations.size == 0}">Você ainda não possui nenhuma reserva de hotel</p>
+</body>
+</html>

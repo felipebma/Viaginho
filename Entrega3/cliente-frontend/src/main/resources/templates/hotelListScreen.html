@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Viaginho - hotels</title> 
+    <link th:href="@{/styles/general.css}" rel="stylesheet" />
+    <link th:href="@{/styles/hotelListScreen.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1 th:text="'Resultado da busca por hotéis em ' + ${searchData.city} + ' ('+ ${searchData.startDate} + ' até ' + ${searchData.endDate}+')'"/>
+    <div>
+        <table border="1" th:if="${hotels.size > 0}">
+            <thead>
+                <tr>
+                    <th>Hotel</th>
+                    <th>Opção de quarto mais barata</th>
+                    <th>Opção de quarto mais cara</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="hotel, hotelIter: ${hotels}">
+                    <td th:text="${hotel.name}"></td>
+                    <td>
+                        <div class="selectReservation">
+                            <span>€ <span th:text="${#numbers.formatDecimal(hotel.minRate, 0, 'COMMA', 2, 'POINT')}"></span></span> 
+                            <form action="#" method="POST" th:action="@{/hotel/reservations/{cheapest}/{hotelId}(cheapest=true,hotelId=${hotelIter.index})}" th:object="${hotels}">
+                                <button type="submit" class="button">reservar</button>
+                            </form>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="selectReservation">
+                            <span>€ <span th:text="${#numbers.formatDecimal(hotel.maxRate, 0, 'COMMA', 2, 'POINT')}"></span></span> 
+                            <form action="#" method="POST" th:action="@{/hotel/reservations/{cheapest}/{hotelId}(cheapest=false,hotelId=${hotelIter.index})}" th:object="${hotels}">
+                                <button type="submit" class="button">reservar</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="color: red;" th:if="${hotels.size == 0}">Não foi possível encontrar hotel disponível para essa cidade nas datas especificadas</p>
+
+        <form action="#" th:action="@{/hotel/search}" th:object="${null}" method="get">
+            <p><input type="submit" value="voltar" /></p>
+        </form>
+    </div>
+</body>
+</html>

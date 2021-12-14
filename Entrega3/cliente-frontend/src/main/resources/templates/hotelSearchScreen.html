@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Viaginho - Search Hotel</title> 
+    <link th:href="@{/styles/general.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Pesquisar Hotel</h1>
+
+    <form action="#" th:action="@{/hotel/search}" th:object="${hotelSearchData}" method="post">
+        <label>cidade:</label>
+        <select name="city">
+            <option value="Recife" th:field="*{city}">Recife</option>
+            <option value="São Paulo" th:field="*{city}">São Paulo</option>
+            <option value="Rio De Janeiro" th:field="*{city}">Rio de Janeiro</option>
+        </select>
+        <label>data de chegada:</label>
+        <input type="date" name="startDate" th:field="*{startDate}"/>
+        <label>data de saida:</label>
+        <input type="date" name="endDate" th:field="*{endDate}"/>
+        <input type="submit" value="hotelSearch"/>
+
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li style="color: red;" class="err" th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
+            </ul>
+        </div>
+    </form>
+
+    <form action="#" th:action="@{/}" th:object="${null}" method="get">
+        <p><input type="submit" value="voltar" /></p>
+    </form>
+</body>
+</html>
