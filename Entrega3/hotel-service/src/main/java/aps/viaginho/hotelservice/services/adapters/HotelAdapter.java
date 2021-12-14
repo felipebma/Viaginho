@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 
 import aps.viaginho.hotelservice.model.HotelSearchData;
 import aps.viaginho.hotelservice.model.HotelSearchResponse.Hotel;
-import aps.viaginho.hotelservice.services.HotelAPIService;
+import aps.viaginho.hotelservice.services.HotelAPIServiceInterface;
 
 @Component
 public class HotelAdapter implements HotelAdapterInterface {
     @Autowired
-    HotelAPIService hotelAPIService;
+    HotelAPIServiceInterface hotelAPIService;
 
     @Override
     public List<Hotel> getHotels(HotelSearchData hotelSearchData) {
