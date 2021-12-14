@@ -31,8 +31,8 @@ import aps.viaginho.hotelservice.model.HotelSearchResponse.Hotel;
 
 @Component
 public class HotelAPIService {
-    private String apiKey = "f20f73f205f227545329991990abef5b";
-    private String secret = "cc5b9bb2e8";
+    private String apiKey = "ebaa2a863f4bd332788c9ea8c2b94a5c";
+    private String secret = "f6a6c89a03";
     private String baseUrl = "https://api.test.hotelbeds.com";
 
     private String getXSignature() throws NoSuchAlgorithmException {
@@ -66,7 +66,7 @@ public class HotelAPIService {
         HttpEntity<String> entity = new HttpEntity<>(body, headers);
         ResponseEntity<HotelSearchResponse> response = restTemplate.exchange(url, HttpMethod.POST, entity,
                 HotelSearchResponse.class);
-
+        System.out.println(response);
         return response.getBody().getHotels().getHotels();
     }
 }

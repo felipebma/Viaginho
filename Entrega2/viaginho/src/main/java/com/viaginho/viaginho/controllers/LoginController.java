@@ -48,7 +48,6 @@ public class LoginController {
         if (result.hasErrors()) {
             return new ModelAndView("registerScreen", result.getModel());
         }
-        facade.createAccount(newAccountDTO.toAccount());
         return new ModelAndView("redirect:/");
     }
 
