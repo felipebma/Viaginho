@@ -3,14 +3,14 @@ package aps.viaginho.contaservice.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aps.viaginho.contaservice.collections.AccountCollection;
 import aps.viaginho.contaservice.model.Account;
-import aps.viaginho.contaservice.repositories.AccountRepository;
 
 @Service
 public class AccountService {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountCollection accountCollection;
 
     public Account login(Account account) {
         if (!validateAccount(account)) {
@@ -20,17 +20,17 @@ public class AccountService {
     }
 
     public Account createAccount(Account account) {
-        return accountRepository.save(account);
+        return accountCollection.save(account);
     }
 
     public boolean validateAccount(Account account) {
-        Account account2 = accountRepository.findById(account.getEmail()).orElse(null);
+        Account account2 = accountCollection.findById(account.getEmail());
         return account2 != null && account2.getPassword().equals(account.getPassword());
     }
 
     public Account getAccountByEmail(String email) {
         System.out.println(email);
-        return accountRepository.findById(email).orElse(null);
+        return accountCollection.findById(email);
     }
 
 }
