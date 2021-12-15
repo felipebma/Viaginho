@@ -19,9 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import aps.viaginho.clientefrontend.Facade;
 import aps.viaginho.clientefrontend.model.Account;
+import aps.viaginho.clientefrontend.model.HotelDTO;
 import aps.viaginho.clientefrontend.model.HotelReservation;
 import aps.viaginho.clientefrontend.model.HotelSearchData;
-import aps.viaginho.clientefrontend.model.HotelSearchResponse.Hotel;
 
 @Controller
 @SuppressWarnings("unchecked")
@@ -51,7 +51,7 @@ public class HotelController {
             if (result.hasErrors()) {
                 return new ModelAndView("hotelSearchScreen", result.getModel());
             }
-            List<Hotel> hotels = facade.getHotels(hotelSearchData);
+            List<HotelDTO> hotels = facade.getHotels(hotelSearchData);
             session.setAttribute("hotels", hotels);
             session.setAttribute("startDate", hotelSearchData.getStartDate());
             session.setAttribute("endDate", hotelSearchData.getEndDate());
@@ -82,13 +82,13 @@ public class HotelController {
         if (!ControllerUtils.hasActiveSession(session)) {
             return new ModelAndView("redirect:/");
         }
-        List<Hotel> hotels = (List<Hotel>) session.getAttribute("hotels");
+        List<HotelDTO> hotels = (List<HotelDTO>) session.getAttribute("hotels");
         String checkInDate = (String) session.getAttribute("startDate");
         String checkOutDate = (String) session.getAttribute("endDate");
         session.removeAttribute("hotels");
         session.removeAttribute("startDate");
         session.removeAttribute("endDate");
-        Hotel hotel = hotels.get(hotelId);
+        HotelDTO hotel = hotels.get(hotelId);
         double price = Double.parseDouble(cheapest ? hotel.getMinRate() : hotel.getMaxRate());
         HotelReservation hotelReservation = new HotelReservation(String.valueOf(hotel.getCode()), hotel.getName(),
                 ControllerUtils.getUserEmail(session), checkInDate, checkOutDate, price);

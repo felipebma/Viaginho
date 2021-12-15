@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import aps.viaginho.clientefrontend.model.Account;
+import aps.viaginho.clientefrontend.model.HotelDTO;
 import aps.viaginho.clientefrontend.model.HotelReservation;
 import aps.viaginho.clientefrontend.model.HotelSearchData;
-import aps.viaginho.clientefrontend.model.HotelSearchResponse.Hotel;
 import aps.viaginho.clientefrontend.services.AccountService;
 import aps.viaginho.clientefrontend.services.HotelService;
 
@@ -29,7 +29,7 @@ public class Facade {
         return accountService.login(account);
     }
 
-    public List<Hotel> getHotels(HotelSearchData hotelSearchData) {
+    public List<HotelDTO> getHotels(HotelSearchData hotelSearchData) {
         return hotelService.getHotels(hotelSearchData);
     }
 

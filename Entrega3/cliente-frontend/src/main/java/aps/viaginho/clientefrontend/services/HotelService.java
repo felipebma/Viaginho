@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aps.viaginho.clientefrontend.model.HotelDTO;
 import aps.viaginho.clientefrontend.model.HotelReservation;
 import aps.viaginho.clientefrontend.model.HotelSearchData;
-import aps.viaginho.clientefrontend.model.HotelSearchResponse.Hotel;
 import aps.viaginho.clientefrontend.services.proxies.HotelServiceProxy;
 
 @Service
@@ -16,7 +16,7 @@ public class HotelService {
     @Autowired
     private HotelServiceProxy hotelServiceProxy;
 
-    public List<Hotel> getHotels(HotelSearchData hotelSearchData) {
+    public List<HotelDTO> getHotels(HotelSearchData hotelSearchData) {
         return hotelServiceProxy.getHotels(hotelSearchData);
     }
 
