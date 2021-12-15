@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  cliente-frontend:
+    build: 
+      context: ./cliente-frontend
+    ports:
+      - 8080:8080
+    depends_on:
+      - conta-service
+      - naming-service
+  conta-service:
+    build: 
+      context: ./conta-service
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo_db
+      - naming-service
+  hotel-service:
+    build: 
+      context: ./hotel-service
+    ports:
+      - 8082:8082
+    depends_on:
+      - mongo_db
+      - naming-service
+  naming-service:
+    build: 
+      context: ./naming-service
+    ports:
+      - 8761:8761
+  mongo_db:
+    image: "mongo:latest"
+    restart: always
+    ports:
+      - 27017:27017
