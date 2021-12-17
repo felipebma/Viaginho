@@ -9,12 +9,12 @@ import aps.viaginho.hotelservice.collections.HotelReservationCollection;
 import aps.viaginho.hotelservice.model.HotelReservation;
 import aps.viaginho.hotelservice.model.HotelSearchData;
 import aps.viaginho.hotelservice.model.HotelSearchResponse.Hotel;
-import aps.viaginho.hotelservice.services.adapters.HotelAdapterInterface;
+import aps.viaginho.hotelservice.services.adapters.HotelAdapter;
 
 @Component
 public class HotelService {
     @Autowired
-    HotelAdapterInterface hotelAdapter;
+    HotelAdapter hotelAdapter;
     @Autowired
     HotelReservationCollection hotelReservationCollection;
 

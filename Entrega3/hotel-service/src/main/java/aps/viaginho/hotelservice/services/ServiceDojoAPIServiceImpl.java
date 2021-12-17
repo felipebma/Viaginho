@@ -21,7 +21,7 @@ import aps.viaginho.hotelservice.model.RapidAPIHotelResponse.Result;
 
 @Service
 @Primary
-public class ServiceDojoAPIService implements HotelAPIServiceInterface {
+public class ServiceDojoAPIServiceImpl implements APIService {
     private String apiKey = "7dfffcee7dmsh930cd6321468b50p11a9f8jsn1727735b9038";
     private String host = "hotels4.p.rapidapi.com";
 
