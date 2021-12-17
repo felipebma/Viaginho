@@ -12,7 +12,6 @@ public class HotelReservation {
     String hotelId;
     String hotelName;
     String userEmail;
-    // Room room;
     String checkInDate;
     String checkOutDate;
     Double price;
