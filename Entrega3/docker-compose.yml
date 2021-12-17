@@ -1,8 +1,7 @@
 version: "3.7"
 services:
   naming-service:
-    build: 
-      context: ./naming-service
+    image: docker.io/viaginho/naming-service:0.0.1-SNAPSHOT
     ports:
       - 8761:8761
   mongo_db:
@@ -11,24 +10,21 @@ services:
     ports:
       - 27017:27017
   conta-service:
-    build: 
-      context: ./conta-service
+    image: docker.io/viaginho/conta-service:0.0.1-SNAPSHOT
     ports:
       - 8081:8081
     depends_on:
       - mongo_db
       - naming-service
   hotel-service:
-    build: 
-      context: ./hotel-service
+    image: docker.io/viaginho/hotel-service:0.0.1-SNAPSHOT
     ports:
       - 8082:8082
     depends_on:
       - mongo_db
       - naming-service
   cliente-frontend:
-    build: 
-      context: ./cliente-frontend
+    image: docker.io/viaginho/cliente-frontend:0.0.1-SNAPSHOT
     ports:
       - 8080:8080
     depends_on:

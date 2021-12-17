@@ -1,7 +1,6 @@
 build:
-	cd ./cliente-frontend && ./mvnw package; \
-	cd ../conta-service && ./mvnw package; \
-	cd ../hotel-service && ./mvnw package; \
-	cd ../naming-service && ./mvnw package; \
-	cd ../ && docker-compose build
+	cd ./cliente-frontend && ./mvnw spring-boot:build-image -DskipTests; \
+	cd ../conta-service && ./mvnw spring-boot:build-image -DskipTests; \
+	cd ../hotel-service && ./mvnw spring-boot:build-image -DskipTests; \
+	cd ../naming-service && ./mvnw spring-boot:build-image -DskipTests;
 	
