@@ -1,9 +1,10 @@
-package aps.viaginho.hotelservice.services;
+package aps.viaginho.hotelservice.services.api;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -22,13 +23,17 @@ import aps.viaginho.hotelservice.model.RapidAPIHotelResponse.Result;
 @Service
 @Primary
 public class ServiceDojoAPIServiceImpl implements APIService {
-    private String apiKey = "7dfffcee7dmsh930cd6321468b50p11a9f8jsn1727735b9038";
-    private String host = "hotels4.p.rapidapi.com";
+    @Value("${dojo.apikey}")
+    private String apiKey;
+    @Value("${dojo.base-url}")
+    private String baseUrl;
+    @Value("${dojo.host}")
+    private String host;
 
     private String getCityId(HotelSearchData hotelSearchData) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
-        String url = "https://hotels4.p.rapidapi.com/locations/v2/search?query=%s&locale=en_US&currency=USD";
+        String url = baseUrl + "/locations/v2/search?query=%s&locale=en_US&currency=USD";
 
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -49,7 +54,8 @@ public class ServiceDojoAPIServiceImpl implements APIService {
 
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
-        String url = "https://hotels4.p.rapidapi.com/properties/list?destinationId=%s&pageNumber=1&pageSize=25&checkIn=%s&checkOut=%s&adults1=1&sortOrder=STAR_RATING_HIGHEST_FIRST&locale=en_US&currency=USD";
+        String url = baseUrl
+                + "/properties/list?destinationId=%s&pageNumber=1&pageSize=25&checkIn=%s&checkOut=%s&adults1=1&sortOrder=STAR_RATING_HIGHEST_FIRST&locale=en_US&currency=USD";
 
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);

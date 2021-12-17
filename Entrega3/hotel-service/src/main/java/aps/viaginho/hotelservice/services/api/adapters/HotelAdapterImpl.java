@@ -1,4 +1,4 @@
-package aps.viaginho.hotelservice.services.adapters;
+package aps.viaginho.hotelservice.services.api.adapters;
 
 import java.security.InvalidParameterException;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import aps.viaginho.hotelservice.model.HotelSearchData;
 import aps.viaginho.hotelservice.model.HotelSearchResponse.Hotel;
-import aps.viaginho.hotelservice.services.APIService;
+import aps.viaginho.hotelservice.services.api.APIService;
 
 @Component
 public class HotelAdapterImpl implements HotelAdapter {

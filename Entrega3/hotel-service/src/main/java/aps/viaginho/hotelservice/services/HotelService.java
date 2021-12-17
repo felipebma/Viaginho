@@ -9,7 +9,7 @@ import aps.viaginho.hotelservice.collections.HotelReservationCollection;
 import aps.viaginho.hotelservice.model.HotelReservation;
 import aps.viaginho.hotelservice.model.HotelSearchData;
 import aps.viaginho.hotelservice.model.HotelSearchResponse.Hotel;
-import aps.viaginho.hotelservice.services.adapters.HotelAdapter;
+import aps.viaginho.hotelservice.services.api.adapters.HotelAdapter;
 
 @Component
 public class HotelService {

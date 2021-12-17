@@ -1,4 +1,4 @@
-package aps.viaginho.hotelservice.services.adapters;
+package aps.viaginho.hotelservice.services.api.adapters;
 
 import java.util.List;
 
